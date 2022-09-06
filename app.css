@@ -1,0 +1,284 @@
+* {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+
+body {
+    min-height: 100vh;
+    background-image: linear-gradient(135deg, #4AB1FF, #2D5CFE);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    background-color: #fff;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    width: 390px;
+    border-radius: 7px;
+    margin: 0 10px;
+}
+
+.wrapper header {
+    color: #4AB1FF;
+    padding: 18px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 500;
+    border-bottom: 1px solid #ccc;
+    letter-spacing: 2px;
+}
+
+.wrapper header i {
+    font-size: 0px;
+    cursor: pointer;
+}
+/* when we add class active to wrapper the icon appears */
+.wrapper.active header i{
+    font-size: 20px;
+}
+
+.wrapper .input-content {
+    margin: 20px 25px 30px;
+}
+
+/* when we add class active to wrapper the input section disappears */
+.wrapper.active .input-content{
+    display: none;
+}
+.input-content .info-text {
+    display: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 7px;
+}
+
+.input-content .info-text.error {
+    display: block;
+    color: #795548;
+    background-color: #f8d7da;
+}
+
+.input-content .info-text.pending {
+    display: block;
+    color: #0c5460;
+    background-color: #d1ecf1;
+}
+
+.input-content :where(input, button) {
+    width: 100%;
+    height: 55px;
+    outline: none;
+    border-radius: 7px;
+    letter-spacing: 1px;
+}
+
+.input-content input {
+    color: #4AB1FF;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* when the input is vaild and focused */
+.input-content input:is(:valid, :focus) {
+    border: 2px solid #4AB1FF;
+}
+
+.input-content input::placeholder {
+    color: #ccc;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.input-content .separator {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 25px 0;
+    position: relative;
+}
+
+.input-content .separator::after {
+    content: "Or";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: 40px;
+    text-align: center;
+    color: #ccc;
+    font-size: 16px;
+}
+
+.input-content button {
+    cursor: pointer;
+    color: #4AB1FF;
+    background-color: transparent;
+    font-size: 17px;
+    font-weight: 500;
+    transition: 0.5s;
+    border: 2px solid #4AB1FF;
+}
+
+.input-content button:hover {
+    color: white;
+    background-color: #4AB1FF;
+}
+
+/* weather content */
+.weather-content {
+    margin: 30px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* we will change it with js */
+    display: none;
+}
+.wrapper.active .weather-content{
+    display: flex;
+}
+
+.weather-content img {
+    width: 130px;
+}
+
+.weather-content>.temp {
+    font-size: 66px;
+    font-weight: 600;
+    color: #4AB1FF;
+    letter-spacing: -3px;
+    margin: 10px 0;
+}
+.weather-content>.temp .number{
+    letter-spacing: 2px;
+}
+.weather-content>.temp .degree {
+    font-size: 45px;
+    position: relative;
+    top: -17px;
+    left: -9px;
+}
+
+.weather-content .weather {
+    font-size: 21px;
+}
+
+.weather-content .location {
+    font-size: 20px;
+    margin-bottom: 25px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.weather-content .location svg {
+    width: 18px;
+    height: 18px;
+}
+
+.weather-content .bottom-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    border-top: 1px solid #ccc;
+}
+
+.bottom-details .col-feels,
+.weather-content .col-min-heat {
+    border-right: 1px solid #ccc;
+}
+
+.bottom-details .col-humidity,
+.bottom-details .col-feels,
+.weather-content .col-min-heat,
+.weather-content .col-max-heat {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+}
+
+.weather-content .col-feels svg,
+.weather-content .col-humidity svg,
+.weather-content .col-min-heat svg,
+.weather-content .col-max-heat svg {
+    width: 30px;
+    height: 30px;
+    color: #4ab1ff;
+}
+
+.weather-content .col-feels .details,
+.weather-content .col-humidity .details,
+.weather-content .col-min-heat,
+.weather-content .col-max-heat {
+    font-size: 16px;
+}
+
+.weather-content .col-humidity .details span,
+.weather-content .col-feels .details .temp,
+.weather-content .col-min-heat .number,
+.weather-content .col-max-heat .number {
+    font-weight: 500;
+}
+
+
+
+/* .bottom-details .col-humidity,
+.bottom-details .col-feels,
+.weather-content .col-min-heat,
+.weather-content .col-max-heat{
+    position: absolute;
+    background-color: white;
+    width: 150px;
+    transform: rotate3d(90, -90, 90, 65deg);
+    border-radius: 5px;
+    height: 75px;
+}
+.weather-content .col-feels,
+.weather-content .col-max-heat{
+    bottom:0;
+}
+.weather-content .col-humidity,
+.weather-content .col-min-heat{
+    bottom: 25%;
+}
+.bottom-details .col-humidity,
+.bottom-details .col-feels{
+    right: -47%;
+}
+.weather-content .col-min-heat,
+.weather-content .col-max-heat{
+    left: -47%;
+}
+
+.weather-content .col-humidity .details,
+.weather-content .col-feels .details,
+.weather-content .col-min-heat .details,
+.weather-content .col-max-heat .details{
+    font-size: 17px;
+    font-weight: 500;
+}
+
+height: 0;
+position: relative; */
+
